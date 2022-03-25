@@ -29,9 +29,14 @@ class MaxBinaryHeap {
     // remove the first element and replace with last element
     const max = this.values[0]
     const last = this.values.pop()
-    this.values[0] = last
+    //edge case: we want to add and sink down only if we have something in the there
+    if(this.values.length > 0) {
+          this.values[0] = last
     //trickle down
     this.sinkDown();
+
+    }
+
     return max;
 
   }
@@ -59,8 +64,6 @@ class MaxBinaryHeap {
             if(swap === null && rightChild > element) || (swap !== null && rightChild > leftChild){
               swap = childRughtIdx
             }
-
-
       }
 
 
@@ -68,6 +71,9 @@ class MaxBinaryHeap {
       if(swap === null ){
         break;
       }
+      this.values[idx] = this.values[swap]
+      this.values[swap] = element
+      idx = swap
     }
 
 
