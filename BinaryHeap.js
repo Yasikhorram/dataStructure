@@ -6,9 +6,10 @@ class MaxBinaryHeap {
     this.values.push(element);
     this.bubbleUp();
   }
-  bubbleUp() {
-    //use the last element indx to find the parent
-    let idx = this.values.length - 1;
+
+
+  bubbleUp() {//use the last element indx to find the parent
+         let idx = this.values.length - 1;
     const element = this.values[idx];
     // Because if say true it will continues even for negative indx so we say while(idx > 0)
     while (idx > 0) {
@@ -31,10 +32,9 @@ class MaxBinaryHeap {
     const last = this.values.pop()
     //edge case: we want to add and sink down only if we have something in the there
     if(this.values.length > 0) {
-          this.values[0] = last
+      this.values[0] = last
     //trickle down
-    this.sinkDown();
-
+      this.sinkDown();
     }
 
     return max;
