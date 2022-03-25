@@ -25,6 +25,12 @@ class MaxBinaryHeap {
       }
     }
   }
+  extractMax(){
+    // remove the first element and replace with last element
+    let removed = this.values[0]
+    this.values[0] = this.valued.length - 1
+
+  }
 }
 let heap = new MaxBinaryHeap();
 heap.insert(55);
