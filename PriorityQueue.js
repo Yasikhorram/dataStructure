@@ -13,7 +13,7 @@ class PriorityQueue {
     while (idx > 0) {
       let parentIdx = Math.floor((idx - 1) / 2);
       let parent = this.values[parentIdx];
-      if (element.priority <= parent.priority) {
+      if (element.priority >= parent.priority) {
         break;
       }
       this.values[parentIdx] = element;
@@ -22,13 +22,13 @@ class PriorityQueue {
     }
   }
   dequeue() {
-    const max = this.values[0];
+    const min = this.values[0];
     const end = this.values.pop();
     if (this.values.length > 0) {
       this.values[0] = end;
       this.sinkDown();
     }
-    return max;
+    return min;
   }
   sinkDown() {
     console.log("sinkkk");
@@ -43,7 +43,7 @@ class PriorityQueue {
       let swap = null;
       if (leftChildIdx < length) {
         leftChild = this.values[leftChildIdx];
-        if (leftChild.priority > element.priority) {
+        if (leftChild.priority < element.priority) {
           swap = leftChildIdx;
         }
       }
@@ -51,8 +51,8 @@ class PriorityQueue {
       if (rightChildIdx < length) {
         rightChild = this.values[rightChildIdx];
         if (
-          (swap === null && rightChild.priority > element.priority) ||
-          (swap !== null && rightChild.priority > leftChild.priority)
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
         ) {
           swap = rightChildIdx;
         }
