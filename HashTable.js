@@ -1,3 +1,10 @@
+class HashTable {
+  // we give it a default value of 53 to be a prime number
+  constructor(size = 53) {
+    this.keyMap = new Array(size);
+  }
+}
+
 function hash(key, length) {
   let total = 0;
   let prime = 31;
