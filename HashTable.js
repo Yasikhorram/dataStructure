@@ -1,9 +1,13 @@
 function hash(key, length) {
-  var total = 0;
-  for (let char of key) {
-    total += char.charCodeAt(0) - 96;
+  let total = 0;
+  let prime = 31;
+
+  for (let i = 0; i < Math.min(key.length, length); i++) {
+    let char = key[i];
+    let value = char.charCodeAt(0) - 96;
+    total = (total * prime + value) % length;
   }
-  return total % length;
+  return total;
 }
 
-console.log(hash("cyan", 10));
+console.log(hash("hello", 13));
