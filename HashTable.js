@@ -28,7 +28,17 @@ class HashTable {
     return this.keyMap;
   }
 
-  get(key) {}
+  get(key) {
+    let indx = this._hash(key);
+    if (this.keyMap[indx]) {
+      for (let i = 0; i < this.keyMap[index].length; i++) {
+        if (key === this.keyMap[indx][i][0]) {
+          return this.keyMap[indx][i][1];
+        }
+      }
+    }
+    return undefined;
+  }
 }
 
 let ht = new HashTable();
