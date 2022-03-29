@@ -1,20 +1,35 @@
+const { ThumbDown } = require("@mui/icons-material");
+
 class HashTable {
   // we give it a default value of 53 to be a prime number
-  constructor(size = 53) {
+  constructor(size = 4) {
     this.keyMap = new Array(size);
   }
-}
 
-function hash(key, length) {
-  let total = 0;
-  let prime = 31;
+  _hash(key) {
+    let total = 0;
+    let prime = 31;
 
-  for (let i = 0; i < Math.min(key.length, length); i++) {
-    let char = key[i];
-    let value = char.charCodeAt(0) - 96;
-    total = (total * prime + value) % length;
+    for (let i = 0; i < Math.min(key.length, 100); i++) {
+      let char = key[i];
+      let value = char.charCodeAt(0) - 96;
+      total = (total * prime + value) % this.keyMap.length;
+    }
+    return total;
   }
-  return total;
+
+  set(key, val) {
+    let indx = this._hash(key);
+    if (this.keyMap[indx]) {
+      this.keyMap[indx].push([key, val]);
+    } else {
+      this.keyMap[indx] = [key, val];
+    }
+    return this.keyMap;
+  }
+
+  get(key) {}
 }
 
-console.log(hash("hello", 13));
+let ht = new HashTable();
+console.log(ht.set("hello world", "goodbye"));
