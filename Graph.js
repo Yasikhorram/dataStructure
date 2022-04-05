@@ -22,14 +22,31 @@ class Graph {
       (vertex) => vertex !== v1
     );
   }
+  removeVertex(v) {
+    console.log("=----->", this.adjacencyList[v].length);
+
+    for (var i = this.adjacencyList[v].length - 1; i >= 0; i--) {
+      console.log("what is adjacencylis[v][i] ", this.adjacencyList[v][i]);
+      this.removeEdge(v, this.adjacencyList[v][i]);
+      console.log(
+        "this.adjacencyList[v][i]--------> ",
+        this.adjacencyList[v][i]
+      );
+    }
+    delete this.adjacencyList[v];
+  }
 }
 
 let g = new Graph();
 g.addVertex("Tokyo");
 g.addVertex("Tehran");
 g.addVertex("Austin");
+g.addVertex("Rome");
+
 g.addEdge("Tokyo", "Austin");
+g.addEdge("Tehran", "Austin");
+
 console.log("before remove", g);
 
-g.removeEdge("Tokyo", "Austin");
-console.log(g);
+g.removeVertex("Tehran");
+console.log("after remove", g);
