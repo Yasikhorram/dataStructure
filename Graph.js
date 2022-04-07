@@ -35,18 +35,23 @@ class Graph {
     }
     delete this.adjacencyList[v];
   }
+  DFSRecursive(start) {}
 }
 
 let g = new Graph();
-g.addVertex("Tokyo");
-g.addVertex("Tehran");
-g.addVertex("Austin");
-g.addVertex("Rome");
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
 
-g.addEdge("Tokyo", "Austin");
-g.addEdge("Tehran", "Austin");
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
 
-console.log("before remove", g);
-
-g.removeVertex("Tehran");
-console.log("after remove", g);
+console.log("graph", g);
