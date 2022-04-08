@@ -35,7 +35,19 @@ class Graph {
     }
     delete this.adjacencyList[v];
   }
-  DFSRecursive(start) {}
+  DFSRecursive(start) {
+    let result = [];
+    let visited = {};
+    // We could write immidately invoked func or regular function
+    (function DFS(vertex) {
+      // when vertex is empty
+      if (!vertex) {
+        return null;
+      }
+    })(start);
+
+    return result;
+  }
 }
 
 let g = new Graph();
