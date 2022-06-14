@@ -38,12 +38,22 @@ class Graph {
   DFSRecursive(start) {
     let result = [];
     let visited = {};
+    const adjacencyList = this.adjacencyList;
     // We could write immidately invoked func or regular function
     (function DFS(vertex) {
       // when vertex is empty
       if (!vertex) {
         return null;
       }
+      visited[vertex] = true;
+      result.push(vertex);
+
+      //Loop over all the values in the adjacency list for that vertex
+      adjacencyList[vertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          return DFS(neighbor);
+        }
+      });
     })(start);
 
     return result;
@@ -67,3 +77,4 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 
 console.log("graph", g);
+console.log("DFS", g.DFSRecursive("A"));
