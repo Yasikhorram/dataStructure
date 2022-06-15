@@ -53,6 +53,15 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+    let shifted = this.head;
+    this.head = shifted.next;
+    this.length--;
+    return shifted;
+  }
 }
 
 // let firstNode = new Node(1);
@@ -65,5 +74,8 @@ newSing.push("a");
 newSing.push("b");
 newSing.push("c");
 newSing.push("d");
+newSing.shift();
+newSing.shift();
+newSing.shift();
 
 console.log(newSing);
