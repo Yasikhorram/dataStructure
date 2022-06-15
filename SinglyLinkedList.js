@@ -1,3 +1,5 @@
+const { runInThisContext } = require("vm");
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -62,11 +64,22 @@ class SinglyLinkedList {
     this.length--;
     return shifted;
   }
-}
+  get(idx) {
+    if (!this.head || idx >= this.length) {
+      // >=
+      return undefined;
+    }
+    let counter = 0;
+    let current = this.head;
 
-// let firstNode = new Node(1);
-// firstNode.next = new Node(2);
-// console.log(firstNode);
+    while (counter !== idx) {
+      current = current.next; // we dont need previous variable
+      counter++;
+    }
+    console.log("curren is :", current);
+    return current;
+  }
+}
 
 let newSing = new SinglyLinkedList();
 
@@ -74,8 +87,6 @@ newSing.push("a");
 newSing.push("b");
 newSing.push("c");
 newSing.push("d");
-newSing.shift();
-newSing.shift();
-newSing.shift();
+newSing.get(2);
 
 console.log(newSing);
