@@ -23,6 +23,36 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+  pop() {
+    if (!this.head) return undefined;
+    let current = this.head;
+    let prev = current;
+    while (current.next) {
+      prev = current;
+      current = current.next;
+    }
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return current;
+  }
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      let oldHead = this.head;
+      this.head = newNode;
+      this.head.next = oldHead;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 // let firstNode = new Node(1);
@@ -31,10 +61,9 @@ class SinglyLinkedList {
 
 let newSing = new SinglyLinkedList();
 
-newSing.push("test");
-newSing.push("test2");
-newSing.push("test3");
-newSing.push("test4");
-newSing.push("test5");
+newSing.push("a");
+newSing.push("b");
+newSing.push("c");
+newSing.push("d");
 
 console.log(newSing);
