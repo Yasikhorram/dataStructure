@@ -103,6 +103,20 @@ class SinglyLinkedList {
       return true;
     }
   }
+  remove(idx) {
+    if (idx < 0 || idx > this.length) return false;
+    else if (idx === 0) {
+      return this.shift();
+    } else if (idx === this.length) {
+      return this.pop();
+    } else {
+      let prev = this.get(idx - 1);
+      let removed = prev.next;
+      prev.nex = removed.next;
+      this.length--;
+      return removed;
+    }
+  }
 }
 
 let newSing = new SinglyLinkedList();
