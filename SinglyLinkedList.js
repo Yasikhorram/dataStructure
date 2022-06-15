@@ -79,6 +79,30 @@ class SinglyLinkedList {
     console.log("curren is :", current);
     return current;
   }
+  set(idx, val) {
+    let foundNode = this.get(idx);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return false;
+    else if (idx === this.length) {
+      return this.push(val);
+    } else if (idx === 0) {
+      return this.unshift(val);
+    } else {
+      let newNode = new Node(val);
+      let prevNode = this.get(idx - 1);
+      let current = prevNode.next;
+      prevNode.next = newNode;
+      newNode.next = current;
+      this.length++;
+      return true;
+    }
+  }
 }
 
 let newSing = new SinglyLinkedList();
@@ -87,6 +111,6 @@ newSing.push("a");
 newSing.push("b");
 newSing.push("c");
 newSing.push("d");
-newSing.get(2);
+newSing.insert(1, "test");
 
 console.log(newSing);
