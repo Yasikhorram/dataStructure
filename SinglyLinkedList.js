@@ -76,7 +76,7 @@ class SinglyLinkedList {
       current = current.next; // we dont need previous variable
       counter++;
     }
-    console.log("curren is :", current);
+
     return current;
   }
   set(idx, val) {
@@ -104,10 +104,10 @@ class SinglyLinkedList {
     }
   }
   remove(idx) {
-    if (idx < 0 || idx > this.length) return false;
+    if (idx < 0 || idx >= this.length) return false;
     else if (idx === 0) {
       return this.shift();
-    } else if (idx === this.length) {
+    } else if (idx === this.length - 1) {
       return this.pop();
     } else {
       let prev = this.get(idx - 1);
@@ -117,6 +117,30 @@ class SinglyLinkedList {
       return removed;
     }
   }
+  reverse() {
+    // let current = this.head;
+    // let prev = null;
+    // while (current) {
+    //   let next = current.next;
+    //   current.next = prev;
+    //   prev = current;
+    //   current = next;
+    // }
+    // return this;
+    let current = this.head;
+    // this.head = this.tail;
+    // this.tail = current;
+    let next;
+    let prev = null;
+
+    for (var i = 0; i < this.length; i++) {
+      next = current.next;
+      current.next = prev;
+      prev = current; // previous is now the current node
+      current = next;
+    }
+    return prev;
+  }
 }
 
 let newSing = new SinglyLinkedList();
@@ -125,6 +149,5 @@ newSing.push("a");
 newSing.push("b");
 newSing.push("c");
 newSing.push("d");
-newSing.insert(1, "test");
-
-console.log(newSing);
+newSing.push("e");
+console.log(newSing.reverse());
