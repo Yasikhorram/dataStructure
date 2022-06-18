@@ -136,7 +136,7 @@ class SinglyLinkedList {
     for (var i = 0; i < this.length; i++) {
       next = current.next;
       current.next = prev;
-      prev = current; // previous is now the current node
+      prev = current;
       current = next;
     }
     return prev;
