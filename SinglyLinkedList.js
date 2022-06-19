@@ -150,4 +150,5 @@ newSing.push("b");
 newSing.push("c");
 newSing.push("d");
 newSing.push("e");
-console.log(newSing.reverse());
+
+//console.log(newSing.reverse());
