@@ -1,7 +1,7 @@
 class Node {
   constructor(val) {
     this.val = val;
-    this.next = next;
+    this.next = null;
   }
 }
 
@@ -13,3 +13,13 @@ const d = new Node("D");
 a.next = b;
 b.next = c;
 c.next = d;
+
+function printNodes(head) {
+  let current = head;
+  while (current) {
+    console.log(current.val);
+    current = current.next;
+  }
+}
+
+printNodes(a);
