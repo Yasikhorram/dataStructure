@@ -22,4 +22,25 @@ function printNodes(head) {
   }
 }
 
-printNodes(a);
+function recursivePrint(head) {
+  if (head === null) return;
+  console.log(head.val);
+  recursivePrint(head.next);
+}
+
+const linkedListVals = (head) => {
+  let values = [];
+  let current = head;
+  while (current) {
+    values.push(current.val);
+    current = current.next;
+  }
+  return values;
+};
+
+function find(head, target) {
+  let current = head;
+  while (current) {}
+}
+
+console.log(linkedListVals(a));
