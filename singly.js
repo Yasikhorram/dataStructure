@@ -40,7 +40,13 @@ const linkedListVals = (head) => {
 
 function find(head, target) {
   let current = head;
-  while (current) {}
+  while (current) {
+    if (current.val === target) {
+      return true;
+    }
+    current = current.next;
+  }
+  return false;
 }
 
 console.log(linkedListVals(a));
