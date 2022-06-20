@@ -49,4 +49,17 @@ function find(head, target) {
   return false;
 }
 
-console.log(linkedListVals(a));
+const reverseLinkedList = (head) => {
+  let current = head;
+  let prev = null;
+  let next;
+  while (current) {
+    next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+};
+
+console.log(reverseLinkedList(a));
