@@ -100,6 +100,27 @@ class DoublyLinkedList {
     }
     return false;
   }
+  insert(idx, val) {
+    if (idx < 0 || idx >= this.length) {
+      return false;
+    } else if (idx === 0) {
+      return this.unshift(val);
+    } else if (idx === this.length) {
+      return this.push(val);
+    }
+    let beforeNode = this.get(idx - 1);
+    let newNode = new Node(val);
+    let afterNode = beforeNode.next;
+
+    beforeNode.next = newNode;
+    newNode.next = afterNode;
+    newNode.prev = beforeNode;
+    afterNode.prev = newNode;
+
+    this.length++;
+    return true;
+  }
+  remove(idx) {}
 }
 
 const Doubly = new DoublyLinkedList();
