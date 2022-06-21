@@ -70,6 +70,28 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+  get(idx) {
+    if (idx >= this.length || idx < 0) {
+      return null;
+    }
+    let count, current;
+    if (idx <= this.length / 2) {
+      count = 0;
+      current = this.head;
+      while (idx !== count) {
+        count++;
+        current = current.next;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (idx !== count) {
+        count--;
+        current = current.prev;
+      }
+    }
+    return current;
+  }
 }
 
 const Doubly = new DoublyLinkedList();
