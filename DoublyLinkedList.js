@@ -16,7 +16,7 @@ class DoublyLinkedList {
     let newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
-      this.tail = this.head;
+      this.tail = newNode;
     } else {
       this.tail.next = newNode;
       newNode.prev = this.tail;
@@ -25,4 +25,44 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+  pop() {
+    if (!this.head) {
+      return undefined;
+    }
+    const popped = this.tail;
+    if (this.length === 1) {
+      this.tail = null;
+      this.head = null;
+    } else {
+      this.tail = popped.prev;
+      this.tail.next = null;
+      popped.prev = null;
+    }
+    this.length--;
+    return popped;
+  }
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+    const shifted = this.head;
+    if (this.length === 1) {
+      this.tail = null;
+      this.head = null;
+    } else {
+      this.head = this.head.next;
+      shifted.next = null;
+      this.head.prev = null;
+    }
+    this.length--;
+    return shifted;
+  }
+  unshift() {}
 }
+
+const Doubly = new DoublyLinkedList();
+Doubly.push(1);
+Doubly.push(2);
+Doubly.push(3);
+Doubly.pop();
+console.log(Doubly);
