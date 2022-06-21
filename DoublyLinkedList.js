@@ -92,6 +92,14 @@ class DoublyLinkedList {
     }
     return current;
   }
+  set(idx, val) {
+    let nodeFound = this.get(idx);
+    if (nodeFound) {
+      nodeFound.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 const Doubly = new DoublyLinkedList();
